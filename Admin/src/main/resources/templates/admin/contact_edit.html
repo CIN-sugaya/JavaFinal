@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Contact</title>
+</head>
+<body>
+    <h1>お問い合わせの編集</h1>
+    <form th:action="@{/admin/contacts/update}" th:object="${contact}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <table>
+            <tr>
+                <td><label>姓</label></td>
+                <td><input type="text" th:field="*{lastName}" /></td>
+            </tr>
+            <tr>
+                <td><label>名</label></td>
+                <td><input type="text" th:field="*{firstName}" /></td>
+            </tr>
+            <tr>
+                <td><label>メールアドレス</label></td>
+                <td><input type="text" th:field="*{email}" /></td>
+            </tr>
+            <tr>
+                <td><label>電話番号</label></td>
+                <td><input type="text" th:field="*{phone}" /></td>
+            </tr>
+            <tr>
+                <td><label>郵便番号</label></td>
+                <td><input type="text" th:field="*{postalCode}" /></td>
+            </tr>
+            <tr>
+                <td><label>住所</label></td>
+                <td><input type="text" th:field="*{address}" /></td>
+            </tr>
+            <tr>
+                <td><label>建物名</label></td>
+                <td><input type="text" th:field="*{buildingName}" /></td>
+            </tr>
+            <tr>
+                <td><label>お問い合わせ種別</label></td>
+                <td><input type="text" th:field="*{contactType}" /></td>
+            </tr>
+            <tr>
+                <td><label>内容</label></td>
+                <td><textarea th:field="*{content}"></textarea></td>
+            </tr>
+        </table>
+        <div>
+            <button type="submit">更新</button>
+        </div>
+    </form>
+    <form th:action="@{/admin/contacts/delete/{id}(id=${contact.id})}" method="post" style="margin-top: 20px;">
+        <button type="submit">削除</button>
+    </form>
+    <div style="margin-top: 20px;">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">ログアウト</button>
+        </form>
+    </div>
+</body>
+</html>
